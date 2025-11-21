@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Bell, X, Briefcase, UserPlus, Clock, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -64,17 +64,8 @@ const mockNotifications: Notification[] = [
 ];
 
 export const NotificationCenter: React.FC = () => {
-  const { user } = useAuth();
-  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
   const [isOpen, setIsOpen] = useState(false);
-  
-  // Load notifications based on user
-  useEffect(() => {
-    if (user) {
-      // In a real app, this would be an API call filtered by user
-      setNotifications(mockNotifications);
-    }
-  }, [user]);
   
   // Count unread notifications
   const unreadCount = notifications.filter(n => !n.read).length;

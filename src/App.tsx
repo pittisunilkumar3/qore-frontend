@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/auth/LoginPage";
-import DashboardLayout from "./components/layout/DashboardLayout";
 import CompanyAdminDashboard from "./pages/dashboard/CompanyAdminDashboard";
+import MainLayout from "./components/layout/MainLayout";
 
 function App() {
   return (
@@ -14,9 +14,9 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <DashboardLayout>
+            <MainLayout>
               <CompanyAdminDashboard />
-            </DashboardLayout>
+            </MainLayout>
           }
         />
       </Routes>
