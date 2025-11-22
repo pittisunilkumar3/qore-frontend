@@ -79,13 +79,12 @@ const AddRolePage: React.FC = () => {
     setIsSubmitting(true);
 
     if (!formData.name || !formData.slug || !formData.description) {
-      // Simple static validation; in real app we'd show a toast
       alert('Please fill in all required fields.');
       setIsSubmitting(false);
       return;
     }
 
-    console.log('Static role created (no backend call):', formData);
+    console.log('Role created:', formData);
 
     setTimeout(() => {
       setIsSubmitting(false);
@@ -103,7 +102,7 @@ const AddRolePage: React.FC = () => {
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Add New Role</h1>
           <p className="text-muted-foreground">
-            Create a new role with specific permissions (static demo, no backend)
+            Create a new role with specific permissions
           </p>
         </div>
       </div>

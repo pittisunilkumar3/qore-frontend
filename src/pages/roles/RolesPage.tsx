@@ -89,15 +89,15 @@ const RolesPage: React.FC = () => {
   };
 
   const handleViewRole = (roleId: number) => {
-    console.log('View role', roleId);
+    navigate(`/roles/${roleId}`);
   };
 
   const handleEditRole = (roleId: number) => {
-    console.log('Edit role', roleId);
+    navigate(`/roles/edit/${roleId}`);
   };
 
   const handleAssignPermissions = (roleId: number) => {
-    console.log('Assign permissions', roleId);
+    navigate(`/roles/permissions/${roleId}`);
   };
 
   const handleDeleteRole = (roleId: number, isSystem?: boolean) => {

@@ -6,6 +6,8 @@ import CompanyAdminDashboard from "./pages/dashboard/CompanyAdminDashboard";
 import MainLayout from "./components/layout/MainLayout";
 import RolesPage from "./pages/roles/RolesPage";
 import AddRolePage from "./pages/roles/AddRolePage";
+import RoleDetailsPage from "./pages/roles/RoleDetailsPage";
+import RoleEditPage from "./pages/roles/RoleEditPage";
 
 function App() {
   return (
@@ -34,6 +36,22 @@ function App() {
           element={
             <MainLayout>
               <AddRolePage />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/roles/edit/:roleId"
+          element={
+            <MainLayout>
+              <RoleEditPage />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/roles/:roleId"
+          element={
+            <MainLayout>
+              <RoleDetailsPage />
             </MainLayout>
           }
         />
