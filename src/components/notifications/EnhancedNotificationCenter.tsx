@@ -21,7 +21,8 @@ import {
 } from "@/components/ui/popover";
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useNotifications, NotificationType } from '@/context/NotificationContext';
+import { useNotifications } from '../../context/NotificationContext';
+import type { NotificationType } from '../../context/NotificationContext';
 import { formatDistanceToNow } from 'date-fns';
 
 export const EnhancedNotificationCenter: React.FC = () => {
