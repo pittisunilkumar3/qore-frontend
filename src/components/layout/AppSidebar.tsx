@@ -393,6 +393,60 @@ const AppSidebar: React.FC<AppSidebarProps> = ({
           </div>
         </div>
 
+        {/* Roles Management Menu */}
+        <div>
+          <button
+            onClick={() => toggleDropdown('Roles Management')}
+            className={cn(
+              "nav-item w-full justify-between",
+              location.pathname.startsWith('/roles') && "active"
+            )}
+            aria-expanded={openDropdowns['Roles Management']}
+            aria-controls="submenu-roles-management"
+          >
+            <div className="flex items-center">
+              <Users className="nav-icon" />
+              <span className={cn("nav-text", isCollapsed && "collapsed")}>
+                Roles Management
+              </span>
+            </div>
+            {!isCollapsed && (
+              <ChevronDown
+                className={cn(
+                  "h-4 w-4 transition-transform duration-200",
+                  openDropdowns['Roles Management'] ? "rotate-180" : ""
+                )}
+              />
+            )}
+          </button>
+          <div
+            id="submenu-roles-management"
+            className={cn(
+              "nav-dropdown",
+              openDropdowns['Roles Management'] && !isCollapsed ? "open" : "closed"
+            )}
+          >
+            <Link
+              to="/roles"
+              className={cn(
+                "nav-dropdown-item",
+                location.pathname === '/roles' && "active"
+              )}
+            >
+              View Roles
+            </Link>
+            <Link
+              to="/roles/add"
+              className={cn(
+                "nav-dropdown-item",
+                location.pathname.startsWith('/roles/add') && "active"
+              )}
+            >
+              Add Role
+            </Link>
+          </div>
+        </div>
+
         {/* HR Onboarding Menu */}
         <div>
           <button
