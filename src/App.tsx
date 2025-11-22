@@ -8,6 +8,8 @@ import RolesPage from "./pages/roles/RolesPage";
 import AddRolePage from "./pages/roles/AddRolePage";
 import RoleDetailsPage from "./pages/roles/RoleDetailsPage";
 import RoleEditPage from "./pages/roles/RoleEditPage";
+import RolePermissionsPage from "./pages/roles/RolePermissionsPage";
+import PermissionGroupsPage from "./pages/roles/PermissionGroupsPage";
 
 function App() {
   return (
@@ -44,6 +46,22 @@ function App() {
           element={
             <MainLayout>
               <RoleEditPage />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/roles/permissions/:roleId"
+          element={
+            <MainLayout>
+              <RolePermissionsPage />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/roles/permission-groups"
+          element={
+            <MainLayout>
+              <PermissionGroupsPage />
             </MainLayout>
           }
         />

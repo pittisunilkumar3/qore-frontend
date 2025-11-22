@@ -114,7 +114,10 @@ const RolesPage: React.FC = () => {
           </p>
         </div>
         <div className="flex space-x-2">
-          <Button variant="outline" onClick={() => console.log('Permission groups clicked')}>
+          <Button
+            variant="outline"
+            onClick={() => navigate('/roles/permission-groups')}
+          >
             <Shield className="mr-2 h-4 w-4" /> Permission Groups
           </Button>
           <Button onClick={handleAddRole}>
