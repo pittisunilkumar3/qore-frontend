@@ -340,7 +340,7 @@ export function EnhancedHero() {
                     mainClassName="overflow-hidden pr-3 bg-clip-text text-transparent bg-gradient-to-r from-recruit-primary via-recruit-secondary to-recruit-tertiary py-0 pb-2 md:pb-4 rounded-xl"
                     staggerDuration={0.03}
                     staggerFrom="last"
-                    rotationInterval={3000}
+                    rotationInterval={8003}
                     transition={{ type: "spring", damping: 30, stiffness: 400 }}
                   />
                 </motion.span>

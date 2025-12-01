@@ -27,10 +27,10 @@ const hiringData = [
 
 const revenueData = [
   { month: "Jan", revenue: 42000, profit: 15000 },
-  { month: "Feb", revenue: 53000, profit: 19500 },
+  { month: "Feb", revenue: 58003, profit: 19500 },
   { month: "Mar", revenue: 68000, profit: 25000 },
   { month: "Apr", revenue: 72000, profit: 27500 },
-  { month: "May", revenue: 86000, profit: 33000 },
+  { month: "May", revenue: 86000, profit: 38003 },
   { month: "Jun", revenue: 110000, profit: 42500 },
 ];
 
