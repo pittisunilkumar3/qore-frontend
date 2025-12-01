@@ -1,6 +1,6 @@
-import { useState, type FormEvent, type MouseEvent } from "react";
+import { useState, type FormEvent, type MouseEvent, type ChangeEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
 import {
   Card,
   CardContent,
@@ -8,32 +8,51 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "../ui/card";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+import { API_ENDPOINTS } from "../../config/api";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
 
-    setTimeout(() => {
-      const isValid =
-        email === "admin@gmail.com" && password === "admin123";
+    try {
+      const response = await fetch(API_ENDPOINTS.AUTH.LOGIN, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
 
-      if (isValid) {
+      const data = await response.json();
+
+      if (data.success) {
+        // Store tokens in localStorage
+        localStorage.setItem('accessToken', data.data.accessToken);
+        localStorage.setItem('refreshToken', data.data.refreshToken);
+        localStorage.setItem('user', JSON.stringify(data.data.employee));
+        
         navigate("/dashboard");
       } else {
-        alert("Invalid credentials. Use admin@gmail.com / admin123");
+        alert(`Login failed: ${data.error || 'Unknown error'}`);
       }
-
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('Login failed. Please try again.');
+    } finally {
       setIsLoading(false);
-    }, 500);
+    }
   };
 
   return (
@@ -53,7 +72,7 @@ const LoginForm = () => {
               type="email"
               placeholder="john@example.com"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -75,7 +94,7 @@ const LoginForm = () => {
               type="password"
               placeholder="••••••••"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
               required
             />
           </div>
@@ -85,6 +104,9 @@ const LoginForm = () => {
             <p className="text-xs">
               Please enter your employee email and password to log in. If you
               don't have an account, please contact your administrator.
+            </p>
+            <p className="text-xs mt-2 font-medium text-blue-600">
+              Demo Credentials: admin@qore.com / Admin@123
             </p>
           </div>
         </CardContent>
